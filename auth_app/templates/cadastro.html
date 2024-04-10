@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block title %}
+  <title>Cadastro</title>
+{% endblock %}
+{% block content %}
+  <form action="{% url 'cadastro' %}" method="post"> {% csrf_token %}
+    <input type="text" name="username" id="username" placeholder="username:">
+    <br>
+    <input type="email" name="email" id="email" placeholder="email:">
+    <br>
+    <input type="password" name="password" id="password" placeholder="password">
+    <br>
+    <input type="submit" value="cadastrar">
+  </form>
+{% endblock %}
