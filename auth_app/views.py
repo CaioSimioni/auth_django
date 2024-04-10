@@ -33,13 +33,7 @@ def login(request):
     else:
       return HttpResponse('Usuário ou senha inválidos.')
 
-"""
-def home(request):
-  if request.user.is_authenticated:
-    return render(request, 'home.html')
-  return render(request, 'login.html')
-"""
-
 @login_required(login_url='/auth/login/')
 def home(request):
   return render(request, 'home.html')
+
