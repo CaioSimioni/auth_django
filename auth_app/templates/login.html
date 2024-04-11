@@ -4,21 +4,56 @@
 {% endblock %}
 {% block style %}
 <style>
-
+  .container {
+    width: 50vw;
+    height: 80vh;
+    margin: 10vh auto;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+  .container form {
+    max-width: max-content;
+    background-color: #ffffff;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+  }
 </style>
 {% endblock%}
 {% block content %}
-<div class="container text-center">
-  <div class="row">
-    <h1>login</h1>
-    <form action="{% url 'login' %}" method="post">
-      {% csrf_token %}
-      <input type="text" name="username" id="username" placeholder="username">
-      <br>
-      <input type="password" name="password" id="password" placeholder="password">
-      <br>
-      <button type="submit">Login</button>
-    </form>
-  </div>
+<div class="container">
+  <form class="row g-3 w-50" action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <p class="h1 text-center">Login</p>
+    <div class="row mb-3">
+      <label for="inputUsername" class="form-label">Username</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="inputUsername" name="username">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword" class="form-label">Password</label>
+      <div class="input-group">
+        <input type="password" class="form-control" id="inputPassword" name="password">
+        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+          <i class="fa-solid fa-eye-slash"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
 </div>
+<script>
+  const togglePassword = document.getElementById('togglePassword');
+  const password = document.getElementById('inputPassword');
+
+  togglePassword.addEventListener('click', function () {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    this.innerHTML = type === 'password' ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>';
+  });
+</script>
 {% endblock %}
