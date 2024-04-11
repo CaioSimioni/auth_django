@@ -1,14 +1,24 @@
 {% extends 'layout.html' %}
 {% block title %}
-  <title>Login</title>
+<title>Login</title>
 {% endblock %}
+{% block style %}
+<style>
+
+</style>
+{% endblock%}
 {% block content %}
-  <form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="username" id="username" placeholder="username">
-    <br>
-    <input type="password" name="password" id="password" placeholder="password">
-    <br>
-    <input type="submit" value="login">
-  </form>
+<div class="container text-center">
+  <div class="row">
+    <h1>login</h1>
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" id="username" placeholder="username">
+      <br>
+      <input type="password" name="password" id="password" placeholder="password">
+      <br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

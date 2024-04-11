@@ -2,6 +2,11 @@
 {% block title %}
   <title>Cadastro</title>
 {% endblock %}
+{% block style %}
+<style>
+
+</style>
+{% endblock%}
 {% block content %}
   <form action="{% url 'cadastro' %}" method="post"> {% csrf_token %}
     <input type="text" name="username" id="username" placeholder="username:">
